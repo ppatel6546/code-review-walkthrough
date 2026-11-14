@@ -11,6 +11,8 @@ function processOrder(customerType, items, email) {
         total *= 0.9;
     } else if (customerType === "vip") {
         total *= 0.8;
+    } else if (customerType === "staff") {
+        total *= 0.7;
     }
 
     total += total * 0.0825;
