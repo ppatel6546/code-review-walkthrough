@@ -1,9 +1,20 @@
+const STAFF_DISCOUNT_RATE = 0.30;
+
 const DISCOUNT_RATES = {
     regular: 0,
     member: 0.10,
     vip: 0.20,
-    staff: 0.30
+    staff: STAFF_DISCOUNT_RATE
 };
+
+function sendReceipt(email, total) {
+    try {
+        console.log("Email receipt to:", email);
+        console.log("Your total is", total);
+    } catch (error) {
+        console.error("Failed to send receipt:", error);
+    }
+}
 
 function processOrder(customerType, items, email) {
     let total = 0;
@@ -17,11 +28,7 @@ function processOrder(customerType, items, email) {
 
     total += total * 0.0825;
 
-    try {
-        console.log("Email receipt to:", email);
-        console.log("Your total is", total);
-    } catch (error) {
-    }
+    sendReceipt(email, total);
 
     console.log("Receipt:", total);
     return total;
