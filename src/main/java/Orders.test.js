@@ -19,3 +19,14 @@ test("member customer gets 10% discount", () => {
 
     expect(total).toBeCloseTo(19.485);
 });
+
+test("staff customer gets 30% discount", () => {
+    const items = [{ price: 100, qty: 1 }];
+
+    const total = processOrder(
+        "staff", items, "staff@example.com"
+    );
+
+    expect(total).toBeCloseTo(75.775);
+});
+

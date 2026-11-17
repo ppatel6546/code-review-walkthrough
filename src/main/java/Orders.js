@@ -1,3 +1,10 @@
+const DISCOUNT_RATES = {
+    regular: 0,
+    member: 0.10,
+    vip: 0.20,
+    staff: 0.30
+};
+
 function processOrder(customerType, items, email) {
     let total = 0;
 
@@ -5,13 +12,8 @@ function processOrder(customerType, items, email) {
         total += item.price * item.qty;
     }
 
-    if (customerType === "regular") {
-        total = total;
-    } else if (customerType === "member") {
-        total *= 0.9;
-    } else if (customerType === "vip") {
-        total *= 0.8;
-    }
+    const discount = DISCOUNT_RATES[customerType] ?? 0;
+    total = total * (1 - discount);
 
     total += total * 0.0825;
 
